@@ -9,7 +9,7 @@ const Browse = () => (
     <Title>Navegar</Title>
 
     <List>
-      <Playlist href="">
+      <Playlist to="/playlist/1">
         <img
           src="https://ksassets.timeincuk.net/wp/uploads/sites/55/2016/01/2016AdeleAlbumCovers_Pello_1_210116.jpg"
           alt="Playlist"
