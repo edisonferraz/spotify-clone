@@ -9,13 +9,7 @@ import { bindActionCreators } from 'redux';
 import { Creators as PlayerActions } from '../../store/ducks/player';
 
 import {
-  Container,
-  Current,
-  Volume,
-  Progress,
-  Controls,
-  Time,
-  ProgressSlider,
+  Container, Current, Volume, Progress, Controls, Time, ProgressSlider,
 } from './styles';
 
 import VolumeIcon from '../../assets/images/volume.svg';
@@ -39,6 +33,7 @@ const Player = ({
   setPosition,
   positionShown,
   progress,
+  setVolume,
 }) => (
   <Container>
     {!!player.currentSong && (
@@ -48,6 +43,7 @@ const Player = ({
         onFinishedPlaying={next}
         onPlaying={playing}
         position={player.position}
+        volume={player.volume}
       />
     )}
 
@@ -112,9 +108,10 @@ const Player = ({
       <img src={VolumeIcon} alt="Volume" />
       <Slider
         railStyle={{ background: '#404040', borderRadius: 10 }}
-        trackStyle={{ bacground: '#fff' }}
+        trackStyle={{ background: '#fff' }}
         handleStyle={{ display: 'none' }}
-        value={100}
+        value={player.volume}
+        onChange={setVolume}
       />
     </Volume>
   </Container>
@@ -141,6 +138,7 @@ Player.propTypes = {
   setPosition: PropTypes.string.isRequired,
   positionShown: PropTypes.string.isRequired,
   progress: PropTypes.number.isRequired,
+  setVolume: PropTypes.func.isRequired,
 };
 
 function msToTime(duration) {
